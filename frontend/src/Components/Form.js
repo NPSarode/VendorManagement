@@ -8,7 +8,16 @@ const Form = (props) => {
  
     const sendHandle = () => {
         props.setTitle("All Venders")
-        props.setUsers([...props.users, data])
+        props.setUsers([...props.users, {...data, code:data.contact.slice(0,3)}])
+        // props.setUsers([
+        //     props.users.map((ele)=>{
+        //         if(id == ele.code) {
+        //             ele = data
+        //         }
+        //         return ele
+        //     })
+        // ])
+        // console.log(props.users)
         navigate('/')
     }
 

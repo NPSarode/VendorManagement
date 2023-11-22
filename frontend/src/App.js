@@ -3,7 +3,7 @@ import './App.css';
 import AllVendors from './Components/AllVendors';
 import Header from './Components/Header';
 import Form from './Components/Form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ViewProfile from './Components/ViewProfile';
 
 function App() {

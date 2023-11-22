@@ -5,6 +5,7 @@ import delet from '../AssetStorage/delete.svg'
 import { Link, useNavigate } from 'react-router-dom'
 
 const AllVendors = (props) => {
+    console.log(props.users)
     const navigate = useNavigate()
 
     const addVendor = () => {
@@ -39,10 +40,10 @@ const AllVendors = (props) => {
                             <td>{ele.contact}</td>
                             <td>{ele.detail}</td>
                             <td>{ele.address}</td>
-                            <td>{ele.contact.slice(0,3)}</td>
-                            <td onClick={()=>{props.setIsEdit(true); props.setTitle('Edit Vendor')}}><Link to={'/addupdate/'+ele.contact.slice(0,3)}><img src={edit}></img></Link></td>
+                            <td>{ele.code}</td>
+                            <td onClick={()=>{props.setIsEdit(true); props.setTitle('Edit Vendor')}}><Link to={'/addupdate/'+ele.code}><img src={edit}></img></Link></td>
                             <td><img src={delet}></img></td>
-                            <td onClick={()=>{props.setTitle('Profile')}}><Link to={'/view/'+ele.contact.slice(0,3)}><img src={view}></img></Link></td>
+                            <td onClick={()=>{props.setTitle('Profile')}}><Link to={'/view/'+ele.code}><img src={view}></img></Link></td>
                         </tr>
                        </> 
                     })}

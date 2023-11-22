@@ -64,7 +64,7 @@ img {
 }
 
 td img:hover {
-  transform: translate(-2%,-2%);
+  transform: scale(1.1);
   filter: drop-shadow(10px 0 5px #807b7b);
 }
 
