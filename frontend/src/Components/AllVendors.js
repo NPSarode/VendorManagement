@@ -1,6 +1,7 @@
 import React from 'react'
 import edit from '../AssetStorage/edit.svg'
 import view from '../AssetStorage/view.svg'
+import delet from '../AssetStorage/delete.svg'
 import { Link, useNavigate } from 'react-router-dom'
 
 const AllVendors = (props) => {
@@ -8,8 +9,10 @@ const AllVendors = (props) => {
 
     const addVendor = () => {
         props.setTitle("Add Vender")
-        navigate('/addupdate')
+        props.setIsEdit(false)
+        navigate('/addupdate/'+-1)
     }
+
     return (
         <>
         <div id='allVendorsDetail'>
@@ -23,53 +26,30 @@ const AllVendors = (props) => {
                         <th scope="col">Address</th>
                         <th scope="col">Code</th>
                         <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                         <th scope="col">View</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td><img src={edit}></img></td>
-                        <td><img src={view}></img></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td><img src={edit}></img></td>
-                        <td><img src={view}></img></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td><img src={edit}></img></td>
-                        <td><img src={view}></img></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td><img src={edit}></img></td>
-                        <td><img src={view}></img></td>
-                    </tr>
+                    {props.users.map(function(ele, index){
+                       return <>
+                        <tr>
+                            <th scope="row">{index + 1}</th>
+                            <td>{ele.name}</td>
+                            <td>{ele.contact}</td>
+                            <td>{ele.detail}</td>
+                            <td>{ele.address}</td>
+                            <td>{ele.contact.slice(0,3)}</td>
+                            <td onClick={()=>{props.setIsEdit(true); props.setTitle('Edit Vendor')}}><Link to={'/addupdate/'+ele.contact.slice(0,3)}><img src={edit}></img></Link></td>
+                            <td><img src={delet}></img></td>
+                            <td onClick={()=>{props.setTitle('Profile')}}><Link to={'/view/'+ele.contact.slice(0,3)}><img src={view}></img></Link></td>
+                        </tr>
+                       </> 
+                    })}
+                    
                 </tbody>
             </table>
-            <button type="button" onClick={addVendor} class="btn btn-danger">Add Vendor+ </button>
+            <button  type="button" onClick={addVendor} className="btn btn-danger">Add Vendor+ </button>
         </div>
         </>
     )
