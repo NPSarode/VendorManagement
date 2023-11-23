@@ -3,7 +3,7 @@ import './App.css';
 import AllVendors from './Components/AllVendors';
 import Header from './Components/Header';
 import Form from './Components/Form';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ViewProfile from './Components/ViewProfile';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     <Routes> 
       <Route path='/' element={<AllVendors setTitle={setTitle} users={users} setUsers={setUsers} setIsEdit={setIsEdit}/>}></Route>
       <Route path='/addupdate/:id' element={<Form setTitle={setTitle} users={users} setUsers={setUsers} isEdit={isEdit}/>}></Route>
-      <Route path='/view/:id' element={<ViewProfile />}></Route>
+      <Route path='/view/:id' element={<ViewProfile setTitle={setTitle} users={users}/>}></Route>
     </Routes>
     </>
   );

@@ -56,7 +56,7 @@ const AllVendors = (props) => {
                             <td>{ele.code}</td>
                             <td onClick={()=>{props.setIsEdit(true); props.setTitle('Edit Vendor')}}><Link to={'/addupdate/'+ele.code}><img src={edit}></img></Link></td>
                             <td onClick={()=>{deleteHandle(ele.code)}}><img src={delet}></img></td>
-                            <td onClick={()=>{props.setTitle('Profile')}}><Link to={'/view/'+ele.code}><img src={view}></img></Link></td>
+                            <td><Link to={'/view/'+ele.code}><img src={view}></img></Link></td>
                         </tr>
                        </> 
                     })}

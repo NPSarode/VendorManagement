@@ -86,12 +86,31 @@ td img:hover {
   height: 80vh;
 }
 
+.details {
+  width: 50%;
+  height: 80vh;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  box-shadow: 20px 0 20px #222;
+}
+
 .profileImage {
-  width: 20%;
+  width: 50%;
   display: flex;
   padding: 20px 0;
 }
 
 .profileImage img {
   height: 25vh;
+}
+
+.profileDetails {
+  height: 40vh;
+  padding: 5px 40px;
+  color: rgb(230, 223, 223);
+}
+
+.profileDetails div {
+  padding: 10px 0;
 }
