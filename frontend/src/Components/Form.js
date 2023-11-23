@@ -7,17 +7,18 @@ const Form = (props) => {
     const [data, setData] = useState({})
  
     const sendHandle = () => {
-        props.setTitle("All Venders")
-        props.setUsers([...props.users, {...data, code:data.contact.slice(0,3)}])
-        // props.setUsers([
-        //     props.users.map((ele)=>{
-        //         if(id == ele.code) {
-        //             ele = data
-        //         }
-        //         return ele
-        //     })
-        // ])
-        // console.log(props.users)
+        if(id != -1) {
+            props.users.map(function (ele) {
+                console.log("ele.contact.slice(0,3)", ele.contact.slice(0,3))
+                if(id == ele.code) {
+                    ele = {...ele, ...data}
+                }
+                return ele
+            })
+        } else {
+            props.setUsers([...props.users, {...data, code:data.contact.slice(0,3)}])
+        }
+        console.log(props.users)
         navigate('/')
     }
 
@@ -34,7 +35,10 @@ const Form = (props) => {
                     setData(ele);
                 }
             })
+            props.setTitle("Edit Venders")
+            return
         }
+        props.setTitle("Add Venders")
     },[])
 
     return (
@@ -57,7 +61,7 @@ const Form = (props) => {
                     <input type="text" value={data.address} onChange={changeHandle} name='address' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter address" required/>
                 </div>
                 <div className='my-3'>
-                    <button type="button" onClick={sendHandle} className="btn btn-danger">{props.isEdit?'Update':'Add'}</button>
+                    <button type="button" onClick={sendHandle} className="btn btn-danger">{props.isEdit?'Update':'Add'} Vendor</button>
                 </div>
             </form>
         </div>

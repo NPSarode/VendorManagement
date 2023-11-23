@@ -15,7 +15,7 @@ function App() {
     <>
     <Header title={title}/>
     <Routes> 
-      <Route path='/' element={<AllVendors setTitle={setTitle} users={users} setIsEdit={setIsEdit}/>}></Route>
+      <Route path='/' element={<AllVendors setTitle={setTitle} users={users} setUsers={setUsers} setIsEdit={setIsEdit}/>}></Route>
       <Route path='/addupdate/:id' element={<Form setTitle={setTitle} users={users} setUsers={setUsers} isEdit={isEdit}/>}></Route>
       <Route path='/view/:id' element={<ViewProfile />}></Route>
     </Routes>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import edit from '../AssetStorage/edit.svg'
 import view from '../AssetStorage/view.svg'
 import delet from '../AssetStorage/delete.svg'
@@ -9,10 +9,23 @@ const AllVendors = (props) => {
     const navigate = useNavigate()
 
     const addVendor = () => {
-        props.setTitle("Add Vender")
         props.setIsEdit(false)
         navigate('/addupdate/'+-1)
     }
+
+    // Deleting Vendor
+    const deleteHandle = (code) => {
+        props.setUsers(
+            props.users.filter((ele) =>{
+                if(ele.code !== code) {
+                    return ele
+                }
+            })
+        )
+    }
+    useEffect(()=>{
+        props.setTitle("All Venders")
+    },[])
 
     return (
         <>
@@ -42,7 +55,7 @@ const AllVendors = (props) => {
                             <td>{ele.address}</td>
                             <td>{ele.code}</td>
                             <td onClick={()=>{props.setIsEdit(true); props.setTitle('Edit Vendor')}}><Link to={'/addupdate/'+ele.code}><img src={edit}></img></Link></td>
-                            <td><img src={delet}></img></td>
+                            <td onClick={()=>{deleteHandle(ele.code)}}><img src={delet}></img></td>
                             <td onClick={()=>{props.setTitle('Profile')}}><Link to={'/view/'+ele.code}><img src={view}></img></Link></td>
                         </tr>
                        </> 

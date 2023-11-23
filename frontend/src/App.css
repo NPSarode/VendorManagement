@@ -28,15 +28,6 @@ header{
   transition: background-color .3s ease-in-out, color .3s ease-in;
 }
 
-header.active{
-  top: var(--_top);
-}
-
-header.clr{
-  background-color: #181111;
-  box-shadow : 0 10px 12px #0005;
-}
-
 header > h2{
   color: #D55;
   cursor: pointer;
